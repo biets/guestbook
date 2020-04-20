@@ -42,6 +42,16 @@ class Comment
      */
     private $photoFilename;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    public function __toString():string
+    {
+        return (string) $this->getEmail();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +113,18 @@ class Comment
     public function setPhotoFilename(?string $photoFilename): self
     {
         $this->photoFilename = $photoFilename;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
